@@ -36,7 +36,7 @@ public class EmployeeServiceTest extends DomainAwareBase {
     @Autowired
     private TimesheetService timesheetService;
 
-    //@Test
+    @Test
     public void testAdd() {
         int size = employeeService.findAll().size();
         Employee employee = new Employee("Eduardo Sans", "engineer");
@@ -99,7 +99,7 @@ public class EmployeeServiceTest extends DomainAwareBase {
         assertNull(employeeService.findById(employee.getId()));
     }
 
-    @Test
+    //@Test
     public void testRemoveEmployee() {
         Manager manager = new Manager("general manager");
         managerService.save(manager);

@@ -83,7 +83,7 @@ public class TaskServiceTest extends DomainAwareBase {
         }
     }
 
-    @Test
+    //@Test
     public void testRemove() {
         Task task = newSpringTask();
         taskService.save(task);

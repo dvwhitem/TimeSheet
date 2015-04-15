@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by go1095 on 4/15/15.
  */
 @Controller
-@RequestMapping("/welcome")
 public class WelcomeController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, value = "/")
     public String welcomePage(Model model) {
         model.addAttribute("welcome", "Welcome to Timesheet application");
         return "index";
