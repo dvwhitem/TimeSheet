@@ -39,7 +39,7 @@
         </property>
     </bean>
     <!-- database properties -->
-    <context:property-placeholder location="db.properties" />
+    <context:property-placeholder location="classpath:db.properties" />
 
     <bean id="transactionManager"
           class="org.springframework.orm.jpa.JpaTransactionManager">
