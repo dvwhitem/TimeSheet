@@ -4,12 +4,11 @@ import com.timesheet.domain.Employee;
 import com.timesheet.domain.Manager;
 import com.timesheet.domain.Task;
 import com.timesheet.domain.Timesheet;
-import com.timesheet.service.EmployeeService;
-import com.timesheet.service.ManagerService;
-import com.timesheet.service.TaskService;
-import com.timesheet.service.TimesheetService;
+import com.timesheet.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by go1095 on 4/15/15.
@@ -32,42 +31,67 @@ public final class EntityGenerator {
 
     public void generateDomain() {
 
+        // Employee
         Employee carlos = new Employee("Carlos", "Programming");
         Employee smith = new Employee("Smith", "Agent");
         Employee robert = new Employee("Robert", "freelancer");
-
         // free employees
         Employee harold = new Employee("Harold", "Actor");
         Employee garry = new Employee("Garry", "Manager");
         Employee kanny = new Employee("Kenny", "Singer");
         Employee luacs = new Employee("Lucas", "Producer");
+        // add employee
+        addAll(employeeService, carlos, smith, robert, harold, garry, kanny, luacs);
 
-        addEmployees(carlos, smith, robert, harold, garry, kanny, luacs);
+        // Manager
+        Manager bill = new Manager("Bill");
+        Manager luiz = new Manager("Luiz");
+        // free manager
+        Manager david = new Manager("David");
+        Manager poul = new Manager("Poul");
+        // add manager
+        addAll(managerService, bill, luiz, david, poul);
 
+        // Task
+        Task planTask = new Task("Create plan", bill, carlos, robert);
+        Task developTask = new Task("Develop project", bill, smith);
+        Task testTask = new Task("Testing project", luiz, robert);
 
+        addAll(taskService, planTask, developTask, testTask);
+
+        Timesheet robertOnCreatePlan = new Timesheet(robert, planTask, 60);
+        Timesheet smithOnDevelopProject = new Timesheet(smith, developTask, 36);
+
+        addAll(timesheetService, robertOnCreatePlan, smithOnDevelopProject);
     }
 
-    private void addEmployees(Employee... employees) {
-        for (Employee employee: employees) {
-            employeeService.save(employee);
+    public void deleteDomain() {
+
+        List<Timesheet> timesheets = timesheetService.findAll();
+        for(Timesheet timesheet: timesheets) {
+            timesheetService.delete(timesheet);
         }
-    }
 
-    private void addManagers(Manager... managers) {
-        for (Manager manager: managers) {
-            managerService.save(manager);
-        }
-    }
-
-    private void addTasks(Task... tasks) {
+        List<Task> tasks = taskService.findAll();
         for(Task task: tasks) {
-            taskService.save(task);
+            taskService.delete(task);
         }
+
+        List<Manager> managers = managerService.findAll();
+        for(Manager manager: managers) {
+            managerService.delete(manager);
+        }
+
+        List<Employee> employees = employeeService.findAll();
+        for(Employee employee: employees) {
+            employeeService.delete(employee);
+        }
+
     }
 
-    private void addTimesheet(Timesheet... timesheets) {
-        for (Timesheet timesheet: timesheets) {
-            timesheetService.save(timesheet);
+    private <T> void addAll(GenericService<T, Long> service, T... entities) {
+        for(T o: entities) {
+            service.save(o);
         }
     }
 }

@@ -10,15 +10,7 @@ import java.util.List;
 /**
  * Created by vitaliy on 09.04.15.
  */
-public interface TimesheetService {
-
-    List<Timesheet> findAll();
-
-    Timesheet findById(Long id);
-
-    Timesheet save(Timesheet timesheet);
-
-    void delete(Timesheet timesheet);
+public interface TimesheetService extends GenericService<Timesheet, Long> {
 
     Task busiestTask();
 

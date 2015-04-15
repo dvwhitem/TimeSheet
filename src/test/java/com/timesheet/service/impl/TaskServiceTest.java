@@ -31,7 +31,7 @@ public class TaskServiceTest extends DomainAwareBase {
     @Autowired
     private EmployeeService employeeService;
 
-    //@Test
+    @Test
     public void testAdd() {
         int size = taskService.findAll().size();
 

@@ -47,7 +47,7 @@ public class TimesheetServiceTest extends AbstractJUnit4SpringContextTests {
         executeScript("sql/cleanup.sql");
     }
 
-    //@Test
+    @Test
     public void testBusiestTask() {
         Task task = timesheetService.busiestTask();
         assertTrue(1 == task.getId());
