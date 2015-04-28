@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 /**
  * Created by vitaliy on 14.04.15.
  */
-@ContextConfiguration(locations = "/persistence-beans.xml")
+//@ContextConfiguration(locations = "/persistence-beans.xml")
 public class TimesheetServiceTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired

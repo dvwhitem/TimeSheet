@@ -9,7 +9,6 @@ import com.timesheet.service.EmployeeService;
 import com.timesheet.service.ManagerService;
 import com.timesheet.service.TaskService;
 import com.timesheet.service.TimesheetService;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
@@ -21,7 +20,7 @@ import static org.junit.Assert.*;
 /**
  * Created by vitaliy on 12.04.15.
  */
-@ContextConfiguration(locations = {"classpath:persistence-beans.xml"})
+//@ContextConfiguration(locations = {"classpath:persistence-beans.xml"})
 public class EmployeeServiceTest extends DomainAwareBase {
 
     @Autowired

@@ -16,7 +16,7 @@ import java.sql.Connection;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:persistence-beans.xml"})
+//@ContextConfiguration(locations = {"classpath:persistence-beans.xml"})
 public class DomainAwareBase {
 
     @Autowired
