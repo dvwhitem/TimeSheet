@@ -30,9 +30,9 @@ public class PersistenceConfig {
             @Value("${jdbc.password}") String password,
             @Value("${jdbc.acquireIncrement}") Integer acquireIncrement,
             @Value("${jdbc.idleConnectionTestPeriod}") Integer idleConnectionTestPeriod,
-            @Value("${jdbc.minPoolSize}") Integer minPoolSize,
             @Value("${jdbc.maxPoolSize}") Integer maxPoolSize,
-            @Value("${jdbc.maxStatements}") Integer maxStatements
+            @Value("${jdbc.maxStatements}") Integer maxStatements,
+            @Value("${jdbc.minPoolSize}") Integer minPoolSize
             ) throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass(driver);
@@ -41,9 +41,9 @@ public class PersistenceConfig {
         dataSource.setPassword(password);
         dataSource.setAcquireIncrement(acquireIncrement);
         dataSource.setIdleConnectionTestPeriod(idleConnectionTestPeriod);
-        dataSource.setMinPoolSize(minPoolSize);
         dataSource.setMaxPoolSize(maxPoolSize);
         dataSource.setMaxStatements(maxStatements);
+        dataSource.setMinPoolSize(minPoolSize);
         return dataSource;
     }
 
