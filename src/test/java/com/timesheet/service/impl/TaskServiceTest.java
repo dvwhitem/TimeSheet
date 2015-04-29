@@ -1,6 +1,9 @@
 package com.timesheet.service.impl;
 
 import com.timesheet.DomainAwareBase;
+import com.timesheet.config.PersistenceConfig;
+import com.timesheet.config.PropertiesConfig;
+import com.timesheet.config.TransactionConfig;
 import com.timesheet.domain.Employee;
 import com.timesheet.domain.Manager;
 import com.timesheet.domain.Task;
@@ -8,8 +11,10 @@ import com.timesheet.service.EmployeeService;
 import com.timesheet.service.ManagerService;
 import com.timesheet.service.TaskService;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +24,8 @@ import static org.junit.Assert.*;
 /**
  * Created by vitaliy on 13.04.15.
  */
-//@ContextConfiguration(locations = {"/persistence-beans.xml"})
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {PropertiesConfig.class, TransactionConfig.class, PersistenceConfig.class})
 public class TaskServiceTest extends DomainAwareBase {
 
     @Autowired

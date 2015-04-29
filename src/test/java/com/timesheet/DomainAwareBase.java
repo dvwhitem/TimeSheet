@@ -1,5 +1,8 @@
 package com.timesheet;
 
+import com.timesheet.config.PersistenceConfig;
+import com.timesheet.config.PropertiesConfig;
+import com.timesheet.config.TransactionConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +19,7 @@ import java.sql.Connection;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = {"classpath:persistence-beans.xml"})
+@ContextConfiguration(classes = {PropertiesConfig.class, PersistenceConfig.class})
 public class DomainAwareBase {
 
     @Autowired

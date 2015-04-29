@@ -1,11 +1,15 @@
 package com.timesheet.service;
 
+import com.timesheet.config.PersistenceConfig;
+import com.timesheet.config.PropertiesConfig;
+import com.timesheet.config.TransactionConfig;
 import com.timesheet.domain.Employee;
 import com.timesheet.domain.Manager;
 import com.timesheet.domain.Task;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.EncodedResource;
@@ -13,6 +17,7 @@ import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -22,7 +27,8 @@ import static org.junit.Assert.*;
 /**
  * Created by vitaliy on 14.04.15.
  */
-//@ContextConfiguration(locations = "/persistence-beans.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {PropertiesConfig.class, TransactionConfig.class, PersistenceConfig.class})
 public class TimesheetServiceTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired
@@ -47,7 +53,7 @@ public class TimesheetServiceTest extends AbstractJUnit4SpringContextTests {
         executeScript("sql/cleanup.sql");
     }
 
-    //@Test
+    @Test
     public void testBusiestTask() {
         Task task = timesheetService.busiestTask();
         assertTrue(1 == task.getId());
@@ -62,7 +68,7 @@ public class TimesheetServiceTest extends AbstractJUnit4SpringContextTests {
         assertEquals(1, timesheetService.tasksForEmployee(owen).size());
     }
 
-    @Test
+    //@Test
     public void testTasksForManager() {
         Manager gram = managerService.findById(1L);
         assertEquals(1, timesheetService.tasksForManager(gram).size());
