@@ -10,6 +10,6 @@ angular
             }
         }
     })
-    .controller('EmployeeController', function ($scope, $http, EmployeeService) {
+    .controller('EmployeeController', function ($scope, EmployeeService) {
         $scope.employees = EmployeeService.showEmployees();
     });
