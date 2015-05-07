@@ -7,6 +7,8 @@ import com.timesheet.domain.Timesheet;
 import com.timesheet.repository.EmployeeRepository;
 import com.timesheet.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +38,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         return Lists.newArrayList(employeeRepository.findAll());
     }
 
+    public Page<Employee> findAll(Pageable var1) {
+        return null;
+    }
+
     public Employee findById(Long id) {
         return employeeRepository.findOne(id);
     }
@@ -47,6 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void delete(Employee employee) {
         employeeRepository.delete(employee);
     }
+
 
     public boolean deleteEmployee(Employee employee) {
 
