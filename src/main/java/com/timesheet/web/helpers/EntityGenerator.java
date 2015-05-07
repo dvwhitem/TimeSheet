@@ -40,8 +40,10 @@ public final class EntityGenerator {
         Employee garry = new Employee("Garry", "Manager");
         Employee kanny = new Employee("Kenny", "Singer");
         Employee luacs = new Employee("Lucas", "Producer");
+        Employee albert = new Employee("Albert", "Manager");
+        Employee sekas = new Employee("Se Kosugi", "Sales manager");
         // add employee
-        addAll(employeeService, carlos, smith, robert, harold, garry, kanny, luacs);
+        addAll(employeeService, carlos, smith, robert, harold, garry, kanny, luacs, albert, sekas);
 
         // Manager
         Manager bill = new Manager("Bill");
@@ -56,13 +58,14 @@ public final class EntityGenerator {
         Task planTask = new Task("Create plan", bill, carlos, robert);
         Task developTask = new Task("Develop project", bill, smith);
         Task testTask = new Task("Testing project", luiz, robert);
-
-        addAll(taskService, planTask, developTask, testTask);
+        Task managerTask = new Task("Manager project", poul, albert);
+        addAll(taskService, planTask, developTask, testTask, managerTask);
 
         Timesheet robertOnCreatePlan = new Timesheet(robert, planTask, 60);
         Timesheet smithOnDevelopProject = new Timesheet(smith, developTask, 36);
+        Timesheet sekasOnManagerProject = new Timesheet(sekas, managerTask, 90);
 
-        addAll(timesheetService, robertOnCreatePlan, smithOnDevelopProject);
+        addAll(timesheetService, robertOnCreatePlan, smithOnDevelopProject, sekasOnManagerProject);
     }
 
     public void deleteDomain() {
