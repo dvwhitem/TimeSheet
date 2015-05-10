@@ -2,8 +2,8 @@
 
 var employeeServices = angular.module('employeeServices', ['ngResource']);
 
-employeeServices.factory('Employee', ['$resource', function($resource) {
-    return $resource('employees', {}, {
-    query: {method: 'GET', params: {}, isArray: true}
+employeeServices.factory('Employee', ['$resource', function ($resource) {
+    return $resource('employees/:pageNumber', {}, {
+        query: {method: 'GET', params: {pageNumber: 'pageNumber'}, isArray: false}
     });
 }]);

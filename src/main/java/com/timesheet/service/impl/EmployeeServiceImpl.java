@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -38,8 +37,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return Lists.newArrayList(employeeRepository.findAll());
     }
 
-    public Page<Employee> findAll(Pageable var1) {
-        return null;
+    public Page<Employee> findAll(Pageable page) {
+        return employeeRepository.findAll(page);
     }
 
     public Employee findById(Long id) {
@@ -53,7 +52,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void delete(Employee employee) {
         employeeRepository.delete(employee);
     }
-
 
     public boolean deleteEmployee(Employee employee) {
 

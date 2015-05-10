@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface EmployeeService extends GenericService<Employee, Long> {
 
-     Page<Employee> findAll(Pageable var1);
+     Page<Employee> findAll(Pageable page);
 
      boolean deleteEmployee(Employee employee);
 }
