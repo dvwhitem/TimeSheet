@@ -38,4 +38,9 @@ public class EmployeeController {
     public Page<Employee> showEmployees(@PathVariable Integer pageNumber) {
         return employeeService.findAll(new PageRequest(pageNumber -1, 2, Sort.Direction.DESC, "id"));
     }
+
+    @RequestMapping("/employee/{id}")
+    public Employee showEmployeeById(@PathVariable Long id) {
+        return employeeService.findById(id);
+    }
 }
