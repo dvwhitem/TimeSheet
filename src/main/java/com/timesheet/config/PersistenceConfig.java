@@ -49,6 +49,10 @@ public class PersistenceConfig {
 
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+            @Value("${hibernate.cache.use_second_level_cache}") String cacheUseSecondLevel,
+            @Value("${hibernate.cache.use_query_cache}") String cacheUseQueryCache,
+            @Value("${hibernate.cache.provider_class}") String cacheProviderClass,
+            @Value("${hibernate.cache.region.factory_class}") String cacheRegionFactoryClass,
             @Value("${hibernate.hbm2ddl.auto}") String hbm2ddl,
             @Value("${hibernate.show_sql}") String showSql,
             @Value("${hibernate.jdbc.batch_size}") String batchSize,
@@ -65,6 +69,10 @@ public class PersistenceConfig {
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Map<String, Object> jpaProperties = new HashMap<String, Object>();
+        jpaProperties.put("hibernate.cache.use_second_level_cache", cacheUseSecondLevel);
+        jpaProperties.put("hibernate.cache.use_query_cache", cacheUseQueryCache);
+        jpaProperties.put("hibernate.cache.provider_class", cacheProviderClass);
+        jpaProperties.put("hibernate.cache.region.factory_class", cacheRegionFactoryClass);
         jpaProperties.put("hibernate.hbm2ddl.auto", hbm2ddl);
         jpaProperties.put("hibernate.show_sql", showSql);
         jpaProperties.put("hibernate.jdbc.batch_size", batchSize);
