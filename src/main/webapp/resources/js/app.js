@@ -4,7 +4,9 @@ var app = angular.module('app', [
     'ngRoute',
     'ngCookies',
     'employeeControllers',
-    'employeeServices'
+    'employeeServices',
+    'taskControllers',
+    'taskServices'
 ]);
 
 
@@ -23,14 +25,20 @@ function($routeProvider) {
         controller: 'EmployeeDetailController'
     });
 
-    $routeProvider.when('/create', {
-        templateUrl: 'partials/create.html',
-        controller: 'CreateController'
+
+    $routeProvider.when('/tasks', {
+        templateUrl: 'partials/task-list.html',
+        controller: 'TaskController'
     });
 
-    $routeProvider.when('/edit/:id', {
-        templateUrl: 'partials/edit.html',
-        controller: 'EditController'
+    $routeProvider.when('/taskcreate', {
+        templateUrl: 'partials/task-create.html',
+        controller: 'TaskCreateController'
+    });
+
+    $routeProvider.when('/taskedit/:id', {
+        templateUrl: 'partials/task-edit.html',
+        controller: 'TaskEditController'
     });
 
     $routeProvider.otherwise({
