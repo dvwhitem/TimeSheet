@@ -76,8 +76,8 @@ employeeControllers.controller('EmployeeDetailController', ['$scope', '$routePar
 
 // Task Controller start
 
-taskControllers.controller('TaskDetailController', ['$scope', 'Employee',
-    function ($scope, Employee) {
+taskControllers.controller('TaskListController', ['$scope', 'Task',
+    function ($scope, Task) {
         /* page properties */
         $scope.records = [];
         $scope.totalPages = 0;
@@ -93,14 +93,14 @@ taskControllers.controller('TaskDetailController', ['$scope', 'Employee',
          * @param pageNumber
          */
         $scope.getAllRecords = function (pageNumber) {
-            $scope.data = Employee.getAllEmployees.query({pageNumber: pageNumber}, function (employee) {
-                $scope.records = employee.content;
-                $scope.totalPages = employee.totalPages;
-                $scope.currentPage = employee.number + 1;
-                $scope.totalRecords = employee.totalElements;
+            $scope.data = Task.getAllEmployees.query({pageNumber: pageNumber}, function (task) {
+                $scope.records = task.content;
+                $scope.totalPages = task.totalPages;
+                $scope.currentPage = task.number + 1;
+                $scope.totalRecords = task.totalElements;
 
                 var pages = [];
-                for (var i = 1; i <= employee.totalPages; i++) {
+                for (var i = 1; i <= task.totalPages; i++) {
                     pages.push(i);
                 }
                 $scope.range = pages;
@@ -133,13 +133,13 @@ taskControllers.controller('TaskDetailController', ['$scope', 'Employee',
         };
         /* get default all records */
         $scope.getAllRecords(1);
-        $scope.initialized = true;
+
 
     }]);
 
 
 taskControllers.controller('TaskDetailController', ['$scope', '$routeParams', 'Task',
-    function($scope, $routeParams, Employee) {
-        $scope.employee = Employee.getEmployeeById.get({id: $routeParams.id});
+    function($scope, $routeParams, Task) {
+        $scope.employee = Task.getEmployeeById.get({id: $routeParams.id});
     }
 ]);
