@@ -1,8 +1,8 @@
 body {
-	padding-top: 60px;
+
 }
 
-ng-hide {
+.ng-hide {
 	display: none;
 }
 

@@ -38,6 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return Lists.newArrayList(employeeRepository.findAll());
     }
 
+    @Cacheable(value = "employeeList")
     public Page<Employee> findAll(Pageable page) {
         return employeeRepository.findAll(page);
     }

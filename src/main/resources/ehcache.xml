@@ -10,7 +10,7 @@
                   memoryStoreEvictionPolicy="LRU" />
 
     <cache
-            name="employee"
+            name="employeeList"
             maxElementsInMemory="16384"
             eternal="false"
             timeToIdleSeconds="300"

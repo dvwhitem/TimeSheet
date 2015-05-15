@@ -32,7 +32,7 @@ import static org.junit.Assert.*;
         PersistenceConfig.class, CacheConfig.class})
 public class EmployeeCacheTest extends DomainAwareBase {
 
-    private String cacheName = "employee";
+    private String cacheName = "employeeList";
 
     @Autowired
     private EmployeeService employeeService;

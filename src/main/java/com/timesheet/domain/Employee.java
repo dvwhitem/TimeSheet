@@ -1,9 +1,6 @@
 package com.timesheet.domain;
 
 
-import org.hibernate.annotations.*;
-import org.hibernate.annotations.Cache;
-
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,7 +10,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "employee")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "employee")
 public class Employee {
 
     private Long id;
