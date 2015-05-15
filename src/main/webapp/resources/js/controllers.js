@@ -11,6 +11,9 @@ employeeControllers.controller('EmployeeListController', ['$scope', 'Employee',
         $scope.range = [];
         $scope.totalRecords = 0;
         $scope.data = {};
+
+
+
         /**
          * Get all records with arguments
          * @param pageNumber
@@ -52,9 +55,12 @@ employeeControllers.controller('EmployeeListController', ['$scope', 'Employee',
         /* return is active page */
         $scope.isActive = function (page) {
             return $scope.currentPage === page;
+
         };
         /* get default all records */
         $scope.getAllRecords(1);
+        $scope.initialized = true;
+
     }]);
 
 employeeControllers.controller('EmployeeDetailController', ['$scope', '$routeParams', 'Employee',
