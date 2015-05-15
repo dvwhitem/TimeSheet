@@ -93,7 +93,7 @@ taskControllers.controller('TaskListController', ['$scope', 'Task',
          * @param pageNumber
          */
         $scope.getAllRecords = function (pageNumber) {
-            $scope.data = Task.getAllEmployees.query({pageNumber: pageNumber}, function (task) {
+            $scope.data = Task.getAllTasks.query({pageNumber: pageNumber}, function (task) {
                 $scope.records = task.content;
                 $scope.totalPages = task.totalPages;
                 $scope.currentPage = task.number + 1;
@@ -140,6 +140,6 @@ taskControllers.controller('TaskListController', ['$scope', 'Task',
 
 taskControllers.controller('TaskDetailController', ['$scope', '$routeParams', 'Task',
     function($scope, $routeParams, Task) {
-        $scope.employee = Task.getEmployeeById.get({id: $routeParams.id});
+        $scope.task = Task.getTaskById.get({id: $routeParams.id});
     }
 ]);
