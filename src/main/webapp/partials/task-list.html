@@ -11,7 +11,7 @@
                 <tr ng-repeat="item in records">
                     <td>{{item.id}}</td>
                     <td><a href="#/task/{{item.id}}">{{item.description}}</a></td>
-                    <td>{{item.manager}}</td>
+                    <td>{{item.manager.name}}</td>
                 </tr>
             </table>
             <ul class="pagination"

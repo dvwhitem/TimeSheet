@@ -28,7 +28,12 @@ function($routeProvider) {
 
     $routeProvider.when('/tasks', {
         templateUrl: 'partials/task-list.html',
-        controller: 'TaskController'
+        controller: 'TaskListController'
+    });
+
+    $routeProvider.when('/task/:id', {
+        templateUrl: 'partials/task-detail.html',
+        controller: 'TaskDetailController'
     });
 
     $routeProvider.when('/taskcreate', {
