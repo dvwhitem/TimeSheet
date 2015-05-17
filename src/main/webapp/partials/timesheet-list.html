@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <h3>Timesheet</h3>
+        <paging>
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>Id</th>
+                    <th>Task</th>
+                    <th>Spent time, hours</th>
+                </tr>
+                <tr ng-repeat="item in records">
+                    <td>{{item.id}}</td>
+                    <td><a href="#/timesheet/{{item.id}}">{{item.task.description}}</a></td>
+                    <td>{{item.hours}}</td>
+                </tr>
+            </table>
+            <ul class="pagination"
+                num-pages="totalPages"
+                current-page="currentPage"
+                on-select-page="getAllRecords(currentPage)">
+                <li ng-class="{disabled: noPrevious()}">
+                    <a href="#" ng-click="getAllRecords(1)">First</a>
+                </li>
+                <li ng-class="{disabled: noPrevious()}">
+                    <a href="#" ng-click="selectPrevious()">Previous</a>
+                </li>
+                <li ng-repeat="page in range"
+                    ng-class="{active: isActive(page)}">
+                    <a href="#" ng-click="getAllRecords(page)">{{page}}</a>
+                </li>
+                <li ng-class="{disabled: noNext()}">
+                    <a href="#" ng-click="selectNext()">Next</a>
+                </li>
+                <li ng-class="{disabled: noNext()}">
+                    <a href="#" ng-click="getAllRecords(totalPages)">Last</a>
+                </li>
+            </ul>
+        </paging>
+    </div>
+</div>

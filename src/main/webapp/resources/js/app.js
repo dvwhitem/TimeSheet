@@ -6,7 +6,9 @@ var app = angular.module('app', [
     'employeeControllers',
     'employeeServices',
     'taskControllers',
-    'taskServices'
+    'taskServices',
+    'timesheetControllers',
+    'timesheetServices'
 ]);
 
 
@@ -44,6 +46,17 @@ function($routeProvider) {
     $routeProvider.when('/taskedit/:id', {
         templateUrl: 'partials/task-edit.html',
         controller: 'TaskEditController'
+    });
+
+
+    $routeProvider.when('/timesheets', {
+        templateUrl: 'partials/timesheet-list.html',
+        controller: 'TimesheetListController'
+    });
+
+    $routeProvider.when('/timesheet/:id', {
+        templateUrl: 'partials/timesheet-detail.html',
+        controller: 'TimesheetDetailController'
     });
 
     $routeProvider.otherwise({
@@ -91,11 +104,10 @@ app.run(function($rootScope, $location, $cookieStore, UserService) {
         });
     }
 
-    $rootScope.initialized = true;
+
 });
 
-
-
+ //   $rootScope.initialized = true;
 
 }]);
 
