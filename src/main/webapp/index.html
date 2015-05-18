@@ -10,55 +10,6 @@
 
 <body>
 
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Timesheet</a>
-            </div>
-
-
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#!/">Home</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="#!/">Employees</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="#!/">Tasks</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="#!/">Timesheet</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-
-                <li class="dropdown" ng-show="user">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">{{user.name}} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="" ng-click="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        </div>
-    </nav>
-
-
-
- <!--   <div class="container ng-hide" ng-show="initialized">
-        <div class="alert alert-danger" ng-show="error">{{error}}</div>
-        <div ng-view></div>
-    </div>-->
-
-
-<!--class="view-container"-->
-
-<!--    <div  class="view-container ng-hide" ng-show="initialized">-->
-
-        <div class="view-container">
-        <div ng-view class="view-frame"></div>
-    </div>
 <script src="webjars/jquery/2.1.4/jquery.js"></script>
 <script src="webjars/angularjs/1.3.15/angular.js"></script>
 <script src="webjars/angularjs/1.3.15/angular-route.js"></script>

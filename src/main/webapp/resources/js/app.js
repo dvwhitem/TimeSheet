@@ -4,7 +4,11 @@ var app = angular.module('app', [
     'ngRoute',
     'ngCookies',
     'employeeControllers',
-    'employeeServices'
+    'employeeServices',
+    'taskControllers',
+    'taskServices',
+    'timesheetControllers',
+    'timesheetServices'
 ]);
 
 
@@ -23,14 +27,36 @@ function($routeProvider) {
         controller: 'EmployeeDetailController'
     });
 
-    $routeProvider.when('/create', {
-        templateUrl: 'partials/create.html',
-        controller: 'CreateController'
+
+    $routeProvider.when('/tasks', {
+        templateUrl: 'partials/task-list.html',
+        controller: 'TaskListController'
     });
 
-    $routeProvider.when('/edit/:id', {
-        templateUrl: 'partials/edit.html',
-        controller: 'EditController'
+    $routeProvider.when('/task/:id', {
+        templateUrl: 'partials/task-detail.html',
+        controller: 'TaskDetailController'
+    });
+
+    $routeProvider.when('/taskcreate', {
+        templateUrl: 'partials/task-create.html',
+        controller: 'TaskCreateController'
+    });
+
+    $routeProvider.when('/taskedit/:id', {
+        templateUrl: 'partials/task-edit.html',
+        controller: 'TaskEditController'
+    });
+
+
+    $routeProvider.when('/timesheets', {
+        templateUrl: 'partials/timesheet-list.html',
+        controller: 'TimesheetListController'
+    });
+
+    $routeProvider.when('/timesheet/:id', {
+        templateUrl: 'partials/timesheet-detail.html',
+        controller: 'TimesheetDetailController'
     });
 
     $routeProvider.otherwise({
@@ -78,11 +104,10 @@ app.run(function($rootScope, $location, $cookieStore, UserService) {
         });
     }
 
-    $rootScope.initialized = true;
+
 });
 
-
-
+ //   $rootScope.initialized = true;
 
 }]);
 

@@ -9,6 +9,8 @@ import com.timesheet.repository.TimesheetRepository;
 import com.timesheet.service.TaskService;
 import com.timesheet.service.TimesheetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +41,10 @@ public class TimesheetServiceImpl implements TimesheetService {
 
     public List<Timesheet> findAll() {
       return Lists.newArrayList(timesheetRepository.findAll());
+    }
+
+    public Page<Timesheet> findAll(Pageable page) {
+        return timesheetRepository.findAll(page);
     }
 
     public Timesheet findById(Long id) {
