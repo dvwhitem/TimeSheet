@@ -44,7 +44,7 @@ public class Task {
         this.id = id;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "task_employee",
             joinColumns = {@JoinColumn(name = "task_id")},
             inverseJoinColumns = {@JoinColumn(name = "employee_id")}

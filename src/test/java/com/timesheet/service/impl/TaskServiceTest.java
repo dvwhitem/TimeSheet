@@ -47,7 +47,7 @@ public class TaskServiceTest extends DomainAwareBase {
         assertTrue(size < taskService.findAll().size());
     }
 
-    //@Test
+    @Test
     public void testUpdate() {
         Task task = newSpringTask();
         taskService.save(task);
