@@ -1,9 +1,16 @@
 'use strict';
 
-var employeeControllers = angular.module('employeeControllers', []);
+var controllers = angular.module('controllers', []);
 
-employeeControllers.controller('EmployeeListController', ['$scope', 'Employee',
-    function ($scope, Employee) {
+controllers.controller('WelcomeController', ['$scope', function ($scope) {
+    $scope.welcome = 'Welcome to Timesheet';
+}]);
+
+controllers.controller('EmployeeListController', ['$scope', '$routeParams', 'Employee',
+    function ($scope, $routeParams, Employee) {
+
+        if(!$routeParams.pageNumber) $routeParams.pageNumber = 1;
+
         /* page properties */
         $scope.records = [];
         $scope.totalPages = 0;
@@ -12,14 +19,12 @@ employeeControllers.controller('EmployeeListController', ['$scope', 'Employee',
         $scope.totalRecords = 0;
         $scope.data = {};
 
-
-
         /**
          * Get all records with arguments
          * @param pageNumber
          */
-        $scope.getAllRecords = function (pageNumber) {
-            $scope.data = Employee.getAllEmployees.query({pageNumber: pageNumber}, function (employee) {
+        $scope.getAllRecords = function () {
+            $scope.data = Employee.getAllEmployees.query({pageNumber: $routeParams.pageNumber}, function (employee) {
                 $scope.records = employee.content;
                 $scope.totalPages = employee.totalPages;
                 $scope.currentPage = employee.number + 1;
@@ -63,7 +68,7 @@ employeeControllers.controller('EmployeeListController', ['$scope', 'Employee',
 
     }]);
 
-employeeControllers.controller('EmployeeDetailController', ['$scope', '$routeParams', 'Employee',
+controllers.controller('EmployeeDetailController', ['$scope', '$routeParams', 'Employee',
     function($scope, $routeParams, Employee) {
         $scope.employee = Employee.getEmployeeById.get({id: $routeParams.id});
     }
