@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false">
+       <diskStore path="java.io.tmpdir"/>
+
+       <defaultCache maxElementsInMemory="4096" eternal="true"
+                     timeToIdleSeconds="300" timeToLiveSeconds="1200" overflowToDisk="false"
+                     memoryStoreEvictionPolicy="LRU" />
+
+       <cache name="employeeList"
+              timeToLiveSeconds="60"
+              maxElementsInMemory="100"
+              eternal="false"
+              overflowToDisk="false"
+              maxElementsOnDisk="10000000"
+              memoryStoreEvictionPolicy="LRU"/>
+
+</ehcache>

@@ -20,21 +20,7 @@ public class PropertiesConfig {
                 new ClassPathResource("database.properties")
 
         };
-
-
-
         p.setLocations(resources);
         return p;
     }
-
-
-    @Bean
-    public ResourceBundleMessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("i18n_en.properties");
-        return messageSource;
-    }
-
-
-
 }
