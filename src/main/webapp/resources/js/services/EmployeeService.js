@@ -1,8 +1,8 @@
 'use strict';
 
-var employeeServices = angular.module('employeeServices', ['ngResource']);
+var employeeService = angular.module('app.employeeService', ['ngResource']);
 
-employeeServices.factory('Employee', ['$resource', function ($resource) {
+employeeService.factory('Employee', ['$resource', function ($resource) {
     return {
         getAllEmployees: $resource('employees/:pageNumber', {}, {
             query: {method: 'GET', params: {pageNumber: 'pageNumber'}, isArray: false}

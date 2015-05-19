@@ -3,8 +3,9 @@
 var app = angular.module('app', [
     'ngRoute',
     'ngCookies',
-    'controllers',
-    'employeeServices'
+    'app.employeeController',
+    'app.welcomeController',
+    'app.employeeService'
 ]);
 
 app.config(['$routeProvider',

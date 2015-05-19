@@ -1,12 +1,8 @@
 'use strict';
 
-var controllers = angular.module('controllers', []);
+var employeeController = angular.module('app.employeeController', []);
 
-controllers.controller('WelcomeController', ['$scope', function ($scope) {
-    $scope.welcome = 'Welcome to Timesheet';
-}]);
-
-controllers.controller('EmployeeListController', ['$scope', '$routeParams', 'Employee',
+employeeController.controller('EmployeeListController', ['$scope', '$routeParams', 'Employee',
     function ($scope, $routeParams, Employee) {
 
         if(!$routeParams.pageNumber) $routeParams.pageNumber = 1;
@@ -68,7 +64,7 @@ controllers.controller('EmployeeListController', ['$scope', '$routeParams', 'Emp
 
     }]);
 
-controllers.controller('EmployeeDetailController', ['$scope', '$routeParams', 'Employee',
+employeeController.controller('EmployeeDetailController', ['$scope', '$routeParams', 'Employee',
     function($scope, $routeParams, Employee) {
         $scope.employee = Employee.getEmployeeById.get({id: $routeParams.id});
     }
