@@ -19,7 +19,7 @@
                 current-page="currentPage"
                 on-select-page="getAllRecords(currentPage)">
                 <li ng-class="{disabled: noPrevious()}">
-                    <a href="#/employees/1" ng-click="getAllRecords(1)">First</a>
+                    <a href="#/employees/1">First</a>
                 </li>
                 <li ng-class="{disabled: noPrevious()}">
                     <a href="#/employees/{{currentPage - 1}}">Previous</a>
