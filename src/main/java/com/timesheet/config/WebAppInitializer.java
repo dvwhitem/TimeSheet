@@ -3,7 +3,7 @@ package com.timesheet.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
- * Created by vitaliy on 28.04.15.
+ * Created by Vitaliy, Yan on 28.04.15.
  */
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 

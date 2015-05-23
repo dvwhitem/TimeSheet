@@ -1,15 +1,12 @@
 package com.timesheet.domain;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by vitaliy on 09.04.15.
+ * Created by Vitaliy, Yan on 09.04.15.
  */
 @Entity
 @Table(name = "task")

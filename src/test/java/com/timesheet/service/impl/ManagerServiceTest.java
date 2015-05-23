@@ -10,7 +10,6 @@ import com.timesheet.domain.Task;
 import com.timesheet.service.EmployeeService;
 import com.timesheet.service.ManagerService;
 import com.timesheet.service.TaskService;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,7 +21,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by vitaliy on 13.04.15.
+ * Created by Vitaliy, Yan on 13.04.15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PropertiesConfig.class, TransactionConfig.class, PersistenceConfig.class})

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 
 /**
- * Created by vitaliy on 28.04.15.
+ * Created by Vitaliy, Yan on 28.04.15.
  */
 @Configuration
 @EnableTransactionManagement

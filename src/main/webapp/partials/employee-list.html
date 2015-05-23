@@ -19,22 +19,23 @@
                 current-page="currentPage"
                 on-select-page="getAllRecords(currentPage)">
                 <li ng-class="{disabled: noPrevious()}">
-                    <a href="#" ng-click="getAllRecords(1)">First</a>
+                    <a href="#/employees/1" ng-click="getAllRecords(1)">First</a>
                 </li>
                 <li ng-class="{disabled: noPrevious()}">
-                    <a href="#" ng-click="selectPrevious()">Previous</a>
+                    <a href="#/employees/{{currentPage - 1}}">Previous</a>
                 </li>
                 <li ng-repeat="page in range"
                     ng-class="{active: isActive(page)}">
-                    <a href="#" ng-click="getAllRecords(page)">{{page}}</a>
+                    <a href="#/employees/{{page}}">{{page}}</a>
                 </li>
                 <li ng-class="{disabled: noNext()}">
-                    <a href="#" ng-click="selectNext()">Next</a>
+                    <a href="#/employees/{{currentPage + 1}}">Next</a>
                 </li>
                 <li ng-class="{disabled: noNext()}">
-                    <a href="#" ng-click="getAllRecords(totalPages)">Last</a>
+                    <a href="#/employees/{{totalPages}}">Last</a>
                 </li>
             </ul>
         </paging>
     </div>
 </div>
+

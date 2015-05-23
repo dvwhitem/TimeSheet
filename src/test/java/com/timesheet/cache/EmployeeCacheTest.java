@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +24,7 @@ import static org.junit.Assert.*;
 
 
 /**
- * Created by vitaliy on 14.05.15.
+ * Created by Vitaliy, Yan on 14.05.15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PropertiesConfig.class, TransactionConfig.class,

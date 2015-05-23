@@ -25,7 +25,7 @@ import java.sql.Connection;
 import static org.junit.Assert.*;
 
 /**
- * Created by vitaliy on 14.04.15.
+ * Created by Vitaliy, Yan on 14.04.15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PropertiesConfig.class, TransactionConfig.class, PersistenceConfig.class})

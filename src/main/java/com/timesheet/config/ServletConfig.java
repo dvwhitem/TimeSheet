@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
 /**
- * Created by vitaliy on 29.04.15.
+ * Created by Vitaliy, Yan on 29.04.15.
  */
 @Configuration
 @EnableWebMvc

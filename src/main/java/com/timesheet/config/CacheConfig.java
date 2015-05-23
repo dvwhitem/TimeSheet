@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
 /**
- * Created by vitaliy on 14.05.15.
+ * Created by Vitaliy, Yan on 14.05.15.
  */
 @Configuration
 @EnableCaching

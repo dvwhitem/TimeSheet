@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Created by vitaliy on 09.04.15.
+ * Created by Vitaliy, Yan on 09.04.15.
  */
 @Entity
 @Table(name = "employee")
@@ -78,4 +78,6 @@ public class Employee {
                 ", department='" + department + '\'' +
                 '}';
     }
+
+
 }

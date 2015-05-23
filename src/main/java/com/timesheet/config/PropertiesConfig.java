@@ -8,7 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 /**
- * Created by vitaliy on 29.04.15.
+ * Created by Vitaliy, Yan on 29.04.15.
  */
 @Configuration
 public class PropertiesConfig {
@@ -31,7 +31,7 @@ public class PropertiesConfig {
     @Bean
     public ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("i18n_en.properties");
+        messageSource.setBasenames("messages_en.properties");
         return messageSource;
     }
 

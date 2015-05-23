@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by vitaliy on 15.04.15.
+ * Created by Vitaliy, Yan on 15.04.15.
  */
 public interface GenericService<T, ID extends Serializable> {
 

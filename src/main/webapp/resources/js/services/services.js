@@ -26,6 +26,9 @@ taskServices.factory('Task', ['$resource', function ($resource) {
         }),
         getTaskById: $resource('task/:id', {}, {
             query: {method: 'GET', params:{id: 'id'}, isArray: false}
+        }),
+        getEditTaskById: $resource('taskedit/:id', {}, {
+            query: {method: 'GET', params:{id: 'id'}, isArray: false}
         })
     };
 }]);
@@ -41,3 +44,7 @@ timesheetServices.factory('Timesheet', ['$resource', function ($resource) {
         })
     };
 }]);
+
+
+// Create delete tasks
+

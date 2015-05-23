@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /**
- * Created by vitaliy on 09.04.15.
+ * Created by Vitaliy, Yan on 09.04.15.
  */
 public interface TimesheetService extends GenericService<Timesheet, Long> {
 

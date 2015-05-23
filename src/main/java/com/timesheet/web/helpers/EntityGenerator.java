@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by go1095 on 4/15/15.
+ * Created by Vitaliy, Yan on 4/15/15.
  */
 @Service
 public final class EntityGenerator {

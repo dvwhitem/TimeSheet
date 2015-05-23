@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
- * Created by vitaliy on 10.04.15.
+ * Created by Vitaliy, Yan on 10.04.15.
  */
 @Service("employeeService")
 @Repository
