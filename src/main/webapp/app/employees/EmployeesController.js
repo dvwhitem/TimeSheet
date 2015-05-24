@@ -1,12 +1,10 @@
 'use strict';
 
-var employeeController = angular.module('app.employeeController', []);
+angular.module('timesheet-app.employees').
 
-employeeController.controller('EmployeeListController', ['$scope', '$routeParams', 'Employee',
-    function ($scope, $routeParams, Employee) {
-
-        if(!$routeParams.pageNumber) $routeParams.pageNumber = 1;
-
+    controller('EmployeesController',
+    function ($scope, $stateParams, Employee) {
+        if (!$stateParams.pageNumber) $stateParams.pageNumber = 1;
         /* page properties */
         $scope.records = [];
         $scope.totalPages = 0;
@@ -20,7 +18,7 @@ employeeController.controller('EmployeeListController', ['$scope', '$routeParams
          * @param pageNumber
          */
         $scope.getAllRecords = function () {
-            $scope.data = Employee.getAllEmployees.query({pageNumber: $routeParams.pageNumber}, function (employee) {
+            $scope.data = Employee.getAllEmployees.query({pageNumber: $stateParams.pageNumber}, function (employee) {
                 $scope.records = employee.content;
                 $scope.totalPages = employee.totalPages;
                 $scope.currentPage = employee.number + 1;
@@ -40,8 +38,9 @@ employeeController.controller('EmployeeListController', ['$scope', '$routeParams
         /* if there previous element return it */
         $scope.selectPrevious = function () {
             if (!$scope.noPrevious()) {
-                $scope.getAllRecords($scope.currentPage - 1);
+                return $scope.currentPage - 1;
             }
+            return $scope.currentPage;
         };
         /* if don't there next element return start page */
         $scope.noNext = function () {
@@ -50,8 +49,9 @@ employeeController.controller('EmployeeListController', ['$scope', '$routeParams
         /* if there next element return it */
         $scope.selectNext = function () {
             if (!$scope.noNext()) {
-                $scope.getAllRecords($scope.currentPage + 1);
+                return $scope.currentPage + 1;
             }
+            return $scope.currentPage;
         }
         /* return is active page */
         $scope.isActive = function (page) {
@@ -60,12 +60,9 @@ employeeController.controller('EmployeeListController', ['$scope', '$routeParams
         };
         /* get default all records */
         $scope.getAllRecords(1);
-        $scope.initialized = true;
+    }).
 
-    }]);
-
-employeeController.controller('EmployeeDetailController', ['$scope', '$routeParams', 'Employee',
-    function($scope, $routeParams, Employee) {
-        $scope.employee = Employee.getEmployeeById.get({id: $routeParams.id});
-    }
-]);
+    controller('EmployeeDetailController',
+    function ($scope, $state, Employee) {
+        $scope.employee = Employee.getEmployeeById.get({id: $state.params.id});
+    });

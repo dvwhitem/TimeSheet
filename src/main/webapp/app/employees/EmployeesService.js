@@ -1,6 +1,6 @@
 'use strict';
 
-var employeeService = angular.module('app.employeeService', ['ngResource']);
+var employeeService = angular.module('timesheet-app.employees-service', ['ngResource']);
 
 employeeService.factory('Employee', ['$resource', function ($resource) {
     return {

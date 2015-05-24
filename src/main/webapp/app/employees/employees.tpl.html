@@ -10,7 +10,7 @@
                 </tr>
                 <tr ng-repeat="item in records">
                     <td>{{item.id}}</td>
-                    <td><a href="#/employee/{{item.id}}">{{item.name}}</a></td>
+                    <td><a ui-sref="detail({id: item.id})">{{item.name}}</a></td>
                     <td>{{item.department}}</td>
                 </tr>
             </table>
@@ -19,20 +19,20 @@
                 current-page="currentPage"
                 on-select-page="getAllRecords(currentPage)">
                 <li ng-class="{disabled: noPrevious()}">
-                    <a href="#/employees/1">First</a>
+                    <a ui-sref="paginated({pageNumber: 1})">First</a>
                 </li>
                 <li ng-class="{disabled: noPrevious()}">
-                    <a href="#/employees/{{currentPage - 1}}">Previous</a>
+                    <a  ui-sref="paginated({pageNumber: selectPrevious()})">Previous</a>
                 </li>
                 <li ng-repeat="page in range"
                     ng-class="{active: isActive(page)}">
-                    <a href="#/employees/{{page}}">{{page}}</a>
+                    <a ui-sref="paginated({pageNumber: page})">{{page}}</a>
                 </li>
                 <li ng-class="{disabled: noNext()}">
-                    <a href="#/employees/{{currentPage + 1}}">Next</a>
+                    <a ui-sref="paginated({pageNumber: selectNext()})">Next</a>
                 </li>
                 <li ng-class="{disabled: noNext()}">
-                    <a href="#/employees/{{totalPages}}">Last</a>
+                    <a ui-sref="paginated({pageNumber: totalPages})">Last</a>
                 </li>
             </ul>
         </paging>
