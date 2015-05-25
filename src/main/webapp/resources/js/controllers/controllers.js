@@ -116,21 +116,28 @@ taskcontrollers.controller('TaskListController', ['$scope', '$routeParams', 'Tas
                     return $scope.currentPage == 1;
                 };
                 /* if there previous element return it */
+
                 $scope.selectPrevious = function () {
                     if (!$scope.noPrevious()) {
-                        $scope.getAllRecords($scope.currentPage - 1);
+                        return $scope.currentPage - 1;
                     }
+                    return $scope.currentPage;
                 };
                 /* if don't there next element return start page */
                 $scope.noNext = function () {
                     return $scope.currentPage == $scope.totalPages;
                 };
                 /* if there next element return it */
+
                 $scope.selectNext = function () {
                     if (!$scope.noNext()) {
-                        $scope.getAllRecords($scope.currentPage + 1);
+                        return $scope.currentPage + 1;
                     }
+                    return $scope.currentPage;
                 }
+
+
+
                 /* return is active page */
                 $scope.isActive = function (page) {
                     return $scope.currentPage === page;
@@ -245,19 +252,23 @@ timesheetcontrollers.controller('TimesheetListController', ['$scope', '$routePar
         /* if there previous element return it */
         $scope.selectPrevious = function () {
             if (!$scope.noPrevious()) {
-                $scope.getAllRecords($scope.currentPage - 1);
+                return $scope.currentPage - 1;
             }
+            return $scope.currentPage;
         };
         /* if don't there next element return start page */
         $scope.noNext = function () {
             return $scope.currentPage == $scope.totalPages;
         };
         /* if there next element return it */
+
         $scope.selectNext = function () {
             if (!$scope.noNext()) {
-                $scope.getAllRecords($scope.currentPage + 1);
+                return $scope.currentPage + 1;
             }
+            return $scope.currentPage;
         }
+
         /* return is active page */
         $scope.isActive = function (page) {
             return $scope.currentPage === page;
