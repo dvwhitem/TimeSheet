@@ -22,14 +22,14 @@
                     <a href="#/employees/1" ng-click="getAllRecords(1)">First</a>
                 </li>
                 <li ng-class="{disabled: noPrevious()}">
-                    <a href="#/employees/{{currentPage - 1}}">Previous</a>
+                    <a href="#/employees/{{selectPrevious()}}">Previous</a>
                 </li>
                 <li ng-repeat="page in range"
                     ng-class="{active: isActive(page)}">
                     <a href="#/employees/{{page}}">{{page}}</a>
                 </li>
                 <li ng-class="{disabled: noNext()}">
-                    <a href="#/employees/{{currentPage + 1}}">Next</a>
+                    <a href="#/employees/{{selectNext()}}">Next</a>
                 </li>
                 <li ng-class="{disabled: noNext()}">
                     <a href="#/employees/{{totalPages}}">Last</a>

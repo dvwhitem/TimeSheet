@@ -60,8 +60,6 @@ public class TaskController {
     public String taskDelete(
             @PathVariable("id") Long taskId) {
 
-
-
         taskService.delete(taskService.findById(taskId));
 
        // taskService.deleteTask(taskId);

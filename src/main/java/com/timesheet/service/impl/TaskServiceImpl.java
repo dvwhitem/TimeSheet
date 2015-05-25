@@ -53,12 +53,12 @@ public class TaskServiceImpl implements TaskService {
     List<Task> tasks = new ArrayList<Task>();
 
 
-    @Override
+
     public List<Task> getAll() {
         return tasks;
     }
 
-    @Override
+
     public void updateTask(Task task) {
         for (Task tks : tasks) {
             if (tks.getId().longValue() == task.getId().longValue()) {
@@ -69,7 +69,7 @@ public class TaskServiceImpl implements TaskService {
         }
     }
 
-    @Override
+
     public void deleteTask(Long id) {
         for(Task tk : tasks){
             if(tk.getId().longValue() == id.longValue()) {
@@ -79,7 +79,7 @@ public class TaskServiceImpl implements TaskService {
         }
     }
 
-    @Override
+
     public void addTask(Task task) {
         Long l = Long.MAX_VALUE;
         for (Task tk : tasks) {

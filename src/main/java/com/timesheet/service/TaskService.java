@@ -14,9 +14,9 @@ public interface TaskService extends GenericService<Task, Long> {
     Page<Task> findAll(Pageable page);
 
     List<Task> getAll();
-    public void updateTask(Task task);
-    public void deleteTask(Long id);
-    public void addTask(Task task);
+    void updateTask(Task task);
+    void deleteTask(Long id);
+    void addTask(Task task);
 
 
 }
