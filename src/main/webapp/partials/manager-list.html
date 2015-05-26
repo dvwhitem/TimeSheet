@@ -6,12 +6,10 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Department</th>
                 </tr>
                 <tr ng-repeat="item in records">
                     <td>{{item.id}}</td>
                     <td><a href="#/manager/{{item.id}}">{{item.name}}</a></td>
-                    <td>{{item.department}}</td>
                 </tr>
             </table>
             <ul class="pagination"

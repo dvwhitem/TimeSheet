@@ -84,7 +84,7 @@ employeecontrollers.controller('EmployeeDetailController', ['$scope', '$routePar
 /* managers */
 
 managercontrollers.controller('ManagerListController', ['$scope', '$routeParams', 'Manager',
-    function ($scope, $routeParams, Employee) {
+    function ($scope, $routeParams, Manager) {
         if(!$routeParams.pageNumber) $routeParams.pageNumber = 1;
         /* page properties */
         $scope.records = [];
@@ -98,7 +98,7 @@ managercontrollers.controller('ManagerListController', ['$scope', '$routeParams'
          * @param pageNumber
          */
         $scope.getAllRecords = function () {
-            $scope.data = Manager.getAllManagers.query({pageNumber: $routeParams.pageNumber}, function (employee) {
+            $scope.data = Manager.getAllManagers.query({pageNumber: $routeParams.pageNumber}, function (manager) {
                 $scope.records = manager.content;
                 $scope.totalPages = manager.totalPages;
                 $scope.currentPage = manager.number + 1;
@@ -138,14 +138,14 @@ managercontrollers.controller('ManagerListController', ['$scope', '$routeParams'
         };
         /* get default all records */
         $scope.getAllRecords(1);
-        $scope.initialized = true;
+
 
     }]);
 
 
 managercontrollers.controller('ManagerDetailController', ['$scope', '$routeParams', 'Manager',
-    function($scope, $routeParams, Employee) {
-        $scope.manager = Employee.getManagerById.get({id: $routeParams.id});
+    function($scope, $routeParams, Manager) {
+        $scope.manager = Manager.getManagerById.get({id: $routeParams.id});
     }
 ]);
 

@@ -6,6 +6,8 @@ var app = angular.module('app', [
     'employeeServices',
     'taskControllers',
     'taskServices',
+    'managerControllers',
+    'managerServices',
     'timesheetControllers',
     'timesheetServices'
 ]);
@@ -28,7 +30,7 @@ app.config(['$routeProvider',
             controller: 'ManagerDetailController'
         })
             .when('/managers/:pageNumber?', {
-                templateUrl: 'partials/employee-list.html',
+                templateUrl: 'partials/manager-list.html',
                 controller: 'ManagerListController'
             });
 
