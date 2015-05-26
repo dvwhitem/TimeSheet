@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="container">
+    <div class="row">
+        <h3>Managers</h3>
+        <paging>
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                </tr>
+                <tr ng-repeat="item in records">
+                    <td>{{item.id}}</td>
+                    <td><a href="#/manager/{{item.id}}">{{item.name}}</a></td>
+                    <td>{{item.department}}</td>
+                </tr>
+            </table>
+            <ul class="pagination"
+                num-pages="totalPages"
+                current-page="currentPage"
+                on-select-page="getAllRecords(currentPage)">
+                <li ng-class="{disabled: noPrevious()}">
+                    <a href="#/managers/1" ng-click="getAllRecords(1)">First</a>
+                </li>
+                <li ng-class="{disabled: noPrevious()}">
+                    <a href="#/managers/{{selectPrevious()}}">Previous</a>
+                </li>
+                <li ng-repeat="page in range"
+                    ng-class="{active: isActive(page)}">
+                    <a href="#/managers/{{page}}">{{page}}</a>
+                </li>
+                <li ng-class="{disabled: noNext()}">
+                    <a href="#/managers/{{selectNext()}}">Next</a>
+                </li>
+                <li ng-class="{disabled: noNext()}">
+                    <a href="#/managers/{{totalPages}}">Last</a>
+                </li>
+            </ul>
+        </paging>
+    </div>
+</div>
 
-</body>
-</html>

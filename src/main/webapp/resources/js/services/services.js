@@ -2,6 +2,8 @@
 
 var employeeServices = angular.module('employeeServices', ['ngResource']);
 
+var managerServices = angular.module('managerServices', ['ngResource']);
+
 var taskServices = angular.module('taskServices', ['ngResource']);
 
 var timesheetServices = angular.module('timesheetServices', ['ngResource']);
@@ -17,6 +19,19 @@ employeeServices.factory('Employee', ['$resource', function ($resource) {
         })
     };
 }]);
+
+
+managerServices.factory('Manager', ['$resource', function ($resource) {
+    return {
+        getAllManagers: $resource('managers/:pageNumber', {}, {
+            query: {method: 'GET', params: {pageNumber: 'pageNumber'}, isArray: false}
+        }),
+        getManagerById: $resource('manager/:id', {}, {
+            query: {method: 'GET', params:{id: 'id'}, isArray: false}
+        })
+    };
+}]);
+
 
 
 taskServices.factory('Task', ['$resource', function ($resource) {

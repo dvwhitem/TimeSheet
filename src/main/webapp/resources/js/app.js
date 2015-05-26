@@ -20,6 +20,19 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/employee-list.html',
                 controller: 'EmployeeListController'
             });
+
+
+
+        $routeProvider.when('/manager/:id', {
+            templateUrl: 'partials/manager-detail.html',
+            controller: 'ManagerDetailController'
+        })
+            .when('/managers/:pageNumber?', {
+                templateUrl: 'partials/employee-list.html',
+                controller: 'ManagerListController'
+            });
+
+
         $routeProvider.when('/task/:id', {
             templateUrl: 'partials/task-detail.html',
             controller: 'TaskDetailController'
