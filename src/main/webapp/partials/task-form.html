@@ -1,0 +1,45 @@
+<div class="container">
+<div class="form" ng-controller="taskFormController">
+    <!-- Verify task, if there is no id present, that we are Adding a Person -->
+    <div ng-if="task.id == null">
+        <h3>Add Task</h3>
+    </div>
+    <!-- Otherwise it's an Edit -->
+    <div ng-if="task.id != null">
+        <h3>Edit Task</h3>
+    </div>
+
+    <div>
+        <!-- Specify the function to be called on submit and disable HTML5 validation, since we're using Angular validation-->
+        <form name="taskForm" ng-submit="saveTask()" novalidate>
+
+            <!-- Display an error if the input is invalid and is dirty (only when someone changes the value) -->
+            <div class="form-group" ng-class="{'has-error' : taskForm.description.$invalid && taskForm.description.$dirty}">
+                <label for="description">Name:</label>
+                <!-- Display a check when the field is valid and was modified -->
+                <span ng-class="{'glyphicon glyphicon-ok' : taskForm.description.$valid && taskForm.description.$dirty}"></span>
+
+
+
+                <input id="description" name="description" type="text" class="form-control" maxlength="50"
+                       ng-model="task.description" value="{{task.description}}"
+                       required ng-minlength="2" ng-maxlength="50"/>
+
+                <!-- Validation messages to be displayed on required, minlength and maxlength -->
+                <p class="help-block" ng-show="taskForm.description.$error.required">Add Task description</p>
+                <p class="help-block" ng-show="taskForm.description.$error.minlength">Name must be at least 2 characters long.</p>
+                <p class="help-block" ng-show="taskForm.description.$error.maxlength">Name cannot be longer than 50 characters.</p>
+            </div>
+
+
+
+
+            <!-- Form buttons. The 'Save' button is only enabled when the form is valid. -->
+            <div class="buttons">
+                <button type="button" class="btn btn-primary" ng-click="clearForm()">Clear</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="taskForm.$invalid">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

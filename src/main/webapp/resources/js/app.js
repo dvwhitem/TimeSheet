@@ -48,9 +48,9 @@ app.config(['$routeProvider',
                 templateUrl: 'partials/task-create.html',
                 controller: 'TaskAddController'
             })
-            .when('/taskedit/:id', {
-                templateUrl: 'partials/task-edit.html',
-                controller: 'TaskEditController'
+            .when('/taskform/:id', {
+                templateUrl: 'partials/task-form.html',
+                controller: 'TaskFormController'
             });
 
 

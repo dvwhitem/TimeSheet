@@ -42,7 +42,7 @@ taskServices.factory('Task', ['$resource', function ($resource) {
         getTaskById: $resource('task/:id', {}, {
             query: {method: 'GET', params:{id: 'id'}, isArray: false}
         }),
-        getEditTaskById: $resource('taskedit/:id', {}, {
+        getEditTaskById: $resource('taskform/:id', {}, {
             query: {method: 'GET', params:{id: 'id'}, isArray: false}
         })
     };

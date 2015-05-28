@@ -40,7 +40,7 @@ public class TaskController {
     }
 
 
-    @RequestMapping(value = "/taskadd", method = RequestMethod.POST)
+    @RequestMapping(value = "/taskform", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public String taskAdd(@ModelAttribute("task")
                           Task task, BindingResult result) {
@@ -48,9 +48,9 @@ public class TaskController {
           taskService.addTask(task);
 
 
-        } /*else {
+        } else {
             taskService.updateTask(task);
-        }*/
+        }
         return "redirect:/index";
     }
 

@@ -253,7 +253,7 @@ function ($scope, Task) {
 
 
 
-taskcontrollers.controller('TaskEditController', ['$scope', '$routeParams', 'Task',
+taskcontrollers.controller('TaskFormController', ['$scope', '$routeParams', 'Task',
     function($scope, $routeParams, Task) {
         $scope.task = Task.getTaskById.get({id: $routeParams.id});
     }
