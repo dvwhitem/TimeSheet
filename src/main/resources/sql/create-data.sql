@@ -4,6 +4,9 @@ delete from timesheet;
 delete from task;
 delete from employee;
 delete from manager;
+delete from user_roles;
+delete from roles;
+delete from users;
 
 -- add few employees
 insert into employee values(1, 'management', 'Carlos Graham');
@@ -38,3 +41,12 @@ insert into timesheet values(2,
 	3, -- employee bill gates
   2 -- second task
 );
+
+-- add user
+insert into users values(1, 'vitaliy', '12345');
+
+-- add roles;
+insert into roles values(1, 'USER');
+
+-- add user_role
+insert INTO user_roles values(1, 1);

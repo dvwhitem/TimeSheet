@@ -1,9 +1,8 @@
 package com.timesheet.web.helpers;
 
-import com.timesheet.domain.Employee;
-import com.timesheet.domain.Manager;
-import com.timesheet.domain.Task;
-import com.timesheet.domain.Timesheet;
+import com.google.common.collect.Lists;
+import com.timesheet.domain.*;
+import com.timesheet.domain.enums.UserRoleEnum;
 import com.timesheet.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,16 @@ public final class EntityGenerator {
     @Autowired
     private TimesheetService timesheetService;
 
+    @Autowired
+    private UserService userService;
+
     public void generateDomain() {
+
+        // User
+        User user = new User("vitaliy", "12345");
+        user.setRoles(Lists.newArrayList(new Role(UserRoleEnum.USER.name())));
+        userService.save(user);
+
 
         // Employee
         Employee carlos = new Employee("Carlos", "Programming");
@@ -88,6 +96,11 @@ public final class EntityGenerator {
         List<Employee> employees = employeeService.findAll();
         for(Employee employee: employees) {
             employeeService.delete(employee);
+        }
+
+        List<User> users = userService.findAll();
+        for(User user: users) {
+            userService.delete(user);
         }
 
     }

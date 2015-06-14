@@ -8,6 +8,9 @@ angular.module('timesheet-app.home', ['ui.router']).
             .state('home', {
                 url: '^/home',
                 controller: 'HomeController',
-                templateUrl: 'app/home/home.tpl.html'
+                templateUrl: 'app/home/home.tpl.html',
+                data: {
+                    authenticate: true
+                }
             });
     });
