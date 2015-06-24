@@ -35,8 +35,13 @@ angular.module('timesheet-app.login', ['ui.router', 'ngCookies']).
             $rootScope.authToken = authToken;
             $http.defaults.headers.common['x-auth-token'] = authToken;
             Auth.user.get(function(user) {
-                $rootScope.isAuthenticated = true;
-                $state.transitionTo('home');
+                if(user.token != undefined) {
+                    $rootScope.isAuthenticated = true;
+                    $state.transitionTo('home');
+                } else {
+                    $rootScope.isAuthenticated = false;
+                    $state.transitionTo('login');
+                }
             });
         }
 

@@ -35,15 +35,20 @@ public class TokenServiceImpl implements TokenService {
 
             MessageDigest sha = MessageDigest.getInstance("SHA-1");
             byte[] result = sha.digest(randomNum.getBytes());
+            System.out.println("USER DETAILS: " + userDetails);
 
-            String token = (String) getKeyFromValue(tokens, userDetails);
-            if(!token.isEmpty() && token != null) {
-                return token;
+            String token;
+            if(!tokens.isEmpty()) {
+                token = (String) getKeyFromValue(tokens, userDetails);
+                if(!token.isEmpty() && token != null) {
+                    return token;
+                }
             }
 
             token = hexEncode(result);
 
             if(!isTokenFromDataBase(userDetails)) {
+                System.out.println("CHECK TOKEN");
                 saveToken(token);
             } else {
                 tokens.put(token, userDetails);
@@ -58,18 +63,10 @@ public class TokenServiceImpl implements TokenService {
     }
 
     public Boolean validate(String token, UserDetails userDetails) {
-
-        if(!isTokenFromDataBase(userDetails)) {
-            saveToken(token);
-        }
-
         return tokens.containsKey(token);
     }
 
     public UserDetails getUserFromToken(String token) {
-        if(tokens.get(token) == null) {
-            User user = userRepository.findByToken(token);
-        }
         return tokens.get(token);
     }
 
@@ -83,10 +80,11 @@ public class TokenServiceImpl implements TokenService {
     }
 
     private boolean isTokenFromDataBase(UserDetails userDetails) {
-
+        System.out.println("USER DET!!!: " + userDetails);
         if(userDetails != null) {
             User user = userRepository.findByLogin(userDetails.getUsername());
             if (user.getToken() != null) {
+                System.out.println("YSR TOK: " + user.getToken());
                 tokens.put(user.getToken(), userDetails);
                 return true;
             }
