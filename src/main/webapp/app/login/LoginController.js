@@ -3,15 +3,12 @@
 angular.module('timesheet-app.login').
 
     controller('LoginController', function ($rootScope, $state, $scope, $http, $cookieStore, loginConfig, Auth) {
-
         var authenticate = function(credentials, callback) {
             $scope.login = Auth.login.save(credentials, function(user) {
-                if($rootScope.user.token) {
-                    console.log('USER TOKEN : ' + user.token);
-                    $rootScope.user = user;
+                if(user.token) {
                     $rootScope.isAuthenticated = true;
                     $http.defaults.headers.common[loginConfig.xAuthToken] = user.token;
-                    $cookieStore.put('user', user);
+                    $cookieStore.put('authToken', user.token);
                 } else {
                     $rootScope.isAuthenticated = false;
                 }
@@ -31,5 +28,5 @@ angular.module('timesheet-app.login').
                    console.log("Login failed");
                }
             });
-        }
+        };
     });

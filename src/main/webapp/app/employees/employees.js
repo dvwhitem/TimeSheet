@@ -8,16 +8,25 @@ angular.module('timesheet-app.employees', ['ui.router']).
             .state('employees', {
                 url: '^/employees',
                 templateUrl: 'app/employees/employees.tpl.html',
-                controller: 'EmployeesController'
+                controller: 'EmployeesController',
+                data: {
+                    authenticate: true
+                }
             })
             .state('paginated', {
                 url: '^/employees/:pageNumber',
                 templateUrl: 'app/employees/employees.tpl.html',
-                controller: 'EmployeesController'
+                controller: 'EmployeesController',
+                data: {
+                    authenticate: true
+                }
             })
             .state('detail', {
                 url: '^/employee/:id',
                 templateUrl: 'app/employees/employees-detail.tpl.html',
-                controller: 'EmployeeDetailController'
+                controller: 'EmployeeDetailController',
+                data: {
+                    authenticate: true
+                }
             });
     });

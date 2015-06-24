@@ -1,6 +1,7 @@
 package com.timesheet.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,6 +14,8 @@ public class User {
     private Long id;
     private String login;
     private String password;
+    private String token;
+    private Date tokenUsed;
     private List<Role> roles;
 
     public User() {}
@@ -61,12 +64,30 @@ public class User {
         this.password = password;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Date getTokenUsed() {
+        return tokenUsed;
+    }
+
+    public void setTokenUsed(Date tokenUsed) {
+        this.tokenUsed = tokenUsed;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", token='" + token + '\'' +
+                ", tokenUsed=" + tokenUsed +
                 ", roles=" + roles +
                 '}';
     }

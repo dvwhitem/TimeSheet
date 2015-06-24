@@ -36,6 +36,7 @@ public class EmployeeController {
 
     @RequestMapping("/employees/{pageNumber}")
     public Page<Employee> showEmployees(@PathVariable Integer pageNumber) {
+        System.out.println("GET Employee: " + employeeService.findAll(new PageRequest(pageNumber -1, 2, Sort.Direction.DESC, "id")));
         return employeeService.findAll(new PageRequest(pageNumber -1, 2, Sort.Direction.DESC, "id"));
     }
 

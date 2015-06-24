@@ -26,6 +26,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByLogin(login);
     }
 
+    public User findByToken(String token) {
+        return userRepository.findByToken(token);
+    }
+
     public List<User> findAll() {
         return Lists.newArrayList(userRepository.findAll());
     }

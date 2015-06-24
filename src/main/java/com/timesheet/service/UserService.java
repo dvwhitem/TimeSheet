@@ -9,4 +9,5 @@ public interface UserService extends GenericService<User, Long> {
 
     User findByLogin(String login);
 
+    User findByToken(String token);
 }

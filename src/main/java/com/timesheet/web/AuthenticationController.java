@@ -1,12 +1,15 @@
 package com.timesheet.web;
 
 import com.timesheet.domain.User;
+import com.timesheet.service.TokenService;
 import com.timesheet.service.impl.UserDetailsServiceImpl;
-import com.timesheet.web.dto.AuthenticationToken;
+import com.timesheet.transfer.UserTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
@@ -25,10 +28,37 @@ public class AuthenticationController {
     private UserDetailsServiceImpl userDetailsService;
 
     @Autowired
+    private TokenService tokenService;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
+    @RequestMapping("/user")
+    public UserTransfer user(HttpServletRequest request) {
+
+        HttpSession session = request.getSession(true);
+
+        SecurityContext securityContext =
+                        (SecurityContext) session.getAttribute(
+                                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY
+                        );
+
+        if(securityContext != null) {
+            Authentication authentication = securityContext.getAuthentication();
+            Object principal = authentication.getPrincipal();
+
+            if (authentication instanceof AnonymousAuthenticationToken) {
+                return null;
+            }
+
+            UserDetails userDetails = (UserDetails) principal;
+            return new UserTransfer(userDetails.getUsername(), userDetails.getAuthorities(), tokenService.getToken(userDetails));
+        }
+        return null;
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public AuthenticationToken login(@RequestBody User user, HttpServletRequest request) {
+    public UserTransfer login(@RequestBody User user, HttpServletRequest request) {
 
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
           user.getLogin(), user.getPassword()
@@ -36,16 +66,15 @@ public class AuthenticationController {
 
         Authentication authentication = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         session.setAttribute(
                 HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext()
         );
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(user.getLogin());
 
-        System.out.println("USERNAME: " + userDetails.getUsername() +
-                " ROLE: " + userDetails.getAuthorities() + " SESSID: " + session.getId());
-
-        return new AuthenticationToken(userDetails.getUsername(), userDetails.getAuthorities(), session.getId());
+        return new UserTransfer(userDetails.getUsername(), userDetails.getAuthorities(), tokenService.getToken(userDetails));
     }
+
+
 }
