@@ -1,23 +1,22 @@
-package com.timesheet.web.dto;
+package com.timesheet.transfer;
 
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
-import java.util.Set;
 
 /**
- * Created by vitaliy on 12.06.15.
+ * Created by vitaliy on 16.06.15.
  */
-public class AuthenticationToken {
+public class UserTransfer {
 
     private String login;
     private Collection<? extends GrantedAuthority> roles;
     private String token;
 
-    public AuthenticationToken() {
+    public UserTransfer() {
     }
 
-    public AuthenticationToken(String login, Collection<? extends GrantedAuthority> roles, String token) {
+    public UserTransfer(String login, Collection<? extends GrantedAuthority> roles, String token) {
         this.login = login;
         this.roles = roles;
         this.token = token;
