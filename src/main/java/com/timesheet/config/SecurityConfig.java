@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.eraseCredentials(false).userDetailsService(userDetailsService);
     }
 
     @Autowired
@@ -51,15 +51,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.sessionManagement().
-                sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
         http.authorizeRequests().
                 antMatchers("/index.html", "/webjars/**", "/app/**", "/login/**", "/user", "/favicon.ico").
                 permitAll().
                 anyRequest().
                 authenticated().
-                and().csrf().disable().addFilterBefore(csrfHeaderFilter(), CsrfFilter.class);
+                and().
+                csrf().
+                disable().
+                addFilterBefore(csrfHeaderFilter(), CsrfFilter.class).sessionManagement().
+                sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.formLogin().
                 loginPage("/#/login").
@@ -80,24 +81,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     FilterChain filterChain) throws ServletException, IOException {
 
                 String authToken = httpServletRequest.getHeader("x-auth-token");
-                System.out.println("!!!AUTH TOKEN : " + authToken);
+
 
                 if(authToken != null) {
 
                     UserDetails userDetails = tokenService.getUserFromToken(authToken);
-                    if(tokenService.validate(authToken, userDetails)) {
 
+                    if(tokenService.validate(authToken, userDetails)) {
                         UsernamePasswordAuthenticationToken authentication =
                                 new UsernamePasswordAuthenticationToken(userDetails.getUsername(), userDetails.getPassword());
                         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
 
                         SecurityContextHolder.getContext().setAuthentication(authenticationManager.authenticate(authentication));
-
-
-                        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-                        UserDetails details = (UserDetails) principal;
-                        System.out.println(details.getUsername() + " ===  " + details.getAuthorities());
                     }
                 }
 

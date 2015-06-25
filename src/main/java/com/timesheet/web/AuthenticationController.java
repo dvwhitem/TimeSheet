@@ -46,7 +46,6 @@ public class AuthenticationController {
         if(securityContext != null) {
             Authentication authentication = securityContext.getAuthentication();
             Object principal = authentication.getPrincipal();
-
             if (authentication instanceof AnonymousAuthenticationToken) {
                 return null;
             }
